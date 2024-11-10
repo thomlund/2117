@@ -1,28 +1,37 @@
-scene.onOverlapTile(SpriteKind.Player, sprites.builtin.forestTiles0, function (sprite, location) {
-	
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
+    mySprite.setPosition(1, 6)
+    tiles.setCurrentTilemap(tilemap`level7`)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.castle.shrub, function (sprite, location) {
+    game.gameOver(false)
+    game.setGameOverEffect(false, effects.confetti)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.builtin.crowd0, function (sprite, location) {
+    mySprite.setPosition(1, 6)
+    tiles.setCurrentTilemap(tilemap`level9`)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.castle.saplingOak, function (sprite, location) {
+    game.gameOver(false)
+    game.setGameOverEffect(false, effects.confetti)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`transparency16`, function (sprite, location) {
-	
+    mySprite.setPosition(1, 6)
+    tiles.setCurrentTilemap(tilemap`level11`)
 })
-let mySprite = sprites.create(img`
-    . . . . . . f f f f f f . . . . 
-    . . . . f f e e e e f 2 f . . . 
-    . . . f f e e e e f 2 2 2 f . . 
-    . . . f e e e f f e e e e f . . 
-    . . . f f f f e e 2 2 2 2 e f . 
-    . . . f e 2 2 2 f f f f e 2 f . 
-    . . f f f f f f f e e e f f f . 
-    . . f f e 4 4 e b f 4 4 e e f . 
-    . . f e e 4 d 4 1 f d d e f . . 
-    . . . f e e e 4 d d d d f . . . 
-    . . . . f f e e 4 4 4 e f . . . 
-    . . . . . 4 d d e 2 2 2 f . . . 
-    . . . . . e d d e 2 2 2 f . . . 
-    . . . . . f e e f 4 5 5 f . . . 
-    . . . . . . f f f f f f . . . . 
-    . . . . . . . f f f . . . . . . 
-    `, SpriteKind.Player)
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleRedCrystal, function (sprite, location) {
+    game.gameOver(false)
+    game.setGameOverEffect(false, effects.confetti)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.builtin.crowd1, function (sprite, location) {
+    mySprite.setPosition(1, 6)
+    tiles.setCurrentTilemap(tilemap`level13`)
+})
+let mySprite: Sprite = null
+tiles.setCurrentTilemap(tilemap`level2`)
+mySprite = sprites.create(assets.image`Thomasfigur`, SpriteKind.Player)
 scene.cameraFollowSprite(mySprite)
 controller.moveSprite(mySprite)
-tiles.setCurrentTilemap(tilemap`level2`)
-scene.setBackgroundColor(9)
+mySprite.setPosition(1, 6)
+forever(function () {
+    mySprite.setVelocity(0, 50)
+})
